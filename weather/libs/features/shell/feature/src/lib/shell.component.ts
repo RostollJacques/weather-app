@@ -7,10 +7,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   selector: 'lib-app-shell',
   imports: [RouterOutlet],
-  template: `
-    <main class="p-4">
-      <router-outlet></router-outlet>
-    </main>
-  `,
+  template: ` <router-outlet></router-outlet> `,
 })
 export class ShellComponent {}
