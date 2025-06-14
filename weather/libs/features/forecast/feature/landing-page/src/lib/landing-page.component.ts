@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ForecastFacade } from '@weather/forecast-state';
 
 @Component({
   selector: 'lib-landing-page',
@@ -8,4 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './landing-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LandingPage {}
+export class LandingPage {
+  public forcastFacade = inject(ForecastFacade);
+}
