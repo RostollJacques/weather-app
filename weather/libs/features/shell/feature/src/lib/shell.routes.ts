@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ShellComponent } from '@weather/shell/feature';
+import { ShellComponent } from './shell.component';
 
 export const appRoutes: Routes = [
   {
@@ -11,7 +11,6 @@ export const appRoutes: Routes = [
         loadChildren: () =>
           import('@weather/features/forecast').then((m) => m.landingPageRoutes),
       },
-      // add additional routes here as needed
       {
         path: '**',
         redirectTo: '',
