@@ -11,7 +11,6 @@ export const appRoutes: Routes = [
         loadChildren: () =>
           import('@weather/features/forecast').then((m) => m.landingPageRoutes),
       },
-      // add additional routes here as needed
       {
         path: '**',
         redirectTo: '',
