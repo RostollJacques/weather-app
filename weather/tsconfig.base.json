@@ -15,13 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@weather/api-services": ["libs/shared/data-access/api/src/index.ts"],
       "@weather/app-config": ["libs/shared/app-config/src/index.ts"],
       "@weather/features/forecast": [
         "libs/features/forecast/feature/landing-page/src/index.ts"
       ],
       "@weather/forecast-state": ["libs/features/forecast/state/src/index.ts"],
       "@weather/shared-state": ["libs/shared/state/src/index.ts"],
-      "@weather/shell/feature": ["libs/features/shell/feature/src/index.ts"]
+      "@weather/shell/feature": ["libs/features/shell/feature/src/index.ts"],
+      "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

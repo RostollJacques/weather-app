@@ -16,6 +16,10 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { appRoutes } from './app.routes';
 import { SharedStateModule } from '@weather/shared-state';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideAppConfig } from '@weather/app-config';
+import { authInterceptorfn } from '@weather/api-services';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +27,9 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+
+    provideAppConfig(environment),
+    provideHttpClient(withInterceptors([authInterceptorfn])),
 
     provideStore(),
     provideEffects(),
