@@ -22,8 +22,9 @@
       ],
       "@weather/forecast-state": ["libs/features/forecast/state/src/index.ts"],
       "@weather/shared-state": ["libs/shared/state/src/index.ts"],
+      "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"],
       "@weather/shell/feature": ["libs/features/shell/feature/src/index.ts"],
-      "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"]
+      "@weather/sidebar": ["libs/shared/ui/sidebar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

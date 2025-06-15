@@ -9,4 +9,25 @@ body {
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  background-color: var(--background-color);
+}
+
+// Variables for Weather App
+:root {
+  // component colours
+  --primary-color: #1e88e5;
+  --secondary-color: #ff9800;
+
+  // text colors
+  --color-light: #ffffff;
+  --text-secondary-color: #b0bec5;
+
+  // notification colors
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --warning-color: #ffeb3b;
+  --info-color: #2196f3;
+
+  // theme colors
+  --background-color: #0b131c;
 }
