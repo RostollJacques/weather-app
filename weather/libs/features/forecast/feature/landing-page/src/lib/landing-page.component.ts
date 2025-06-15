@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForecastFacade } from '@weather/forecast-state';
+import { SearchFacade } from '@weather/search-state';
 import { ForecastApiService } from '@weather/api-services';
 
 @Component({
@@ -17,17 +18,24 @@ import { ForecastApiService } from '@weather/api-services';
 })
 export class LandingPage implements OnInit {
   public forcastFacade = inject(ForecastFacade);
+  public searchFacade = inject(SearchFacade);
   public api = inject(ForecastApiService);
+
+  // observables
+  searchLoading$ = this.searchFacade.loading$;
 
   ngOnInit() {
     console.log('LandingPage initialized');
-
-    this.load();
   }
 
-  load() {
-    this.api.getForecast(40.71, -74.01).subscribe({
-      next: (forecast) => console.log(forecast),
-    });
+  getGeolocation() {
+    this.searchFacade.getGeolocation();
   }
+
+  // this.load();
+  // load() {
+  //   this.api.getForecast(40.71, -74.01).subscribe({
+  //     next: (forecast) => console.log(forecast),
+  //   });
+  // }
 }

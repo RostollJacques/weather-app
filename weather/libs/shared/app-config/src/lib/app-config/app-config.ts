@@ -4,11 +4,7 @@ export interface AppConfig {
   apiKey: string;
   defaultLocation: string;
   defaultUnits: 'metric' | 'imperial';
-  cacheDuration: number;
   featureFlags: {
-    enableDarkMode: boolean;
-    enableNotifications: boolean;
     enableLocationTracking: boolean;
-    enableWeatherAlerts: boolean;
   };
 }
