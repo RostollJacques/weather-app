@@ -4,6 +4,12 @@ A simple weather dashboard built with **Nx**, **Angular**, **Tailwind CSS**, **N
 
 ---
 
+## 🚀 Navigate to the right path
+
+```bash
+cd weather
+```
+
 ## 🚀 Install Dependancies
 
 ```bash
