@@ -1,26 +1,27 @@
 <aside
   class="w-20 h-full flex flex-col justify-between bg-slate-700 text-white rounded-2xl shadow-lg p-4"
 >
-  <!-- Top Section -->
   <nav class="flex flex-col gap-6 mt-2">
-    <button class="flex flex-col items-center gap-1">
+    <button
+      *ngFor="let item of navItems"
+      (click)="navigate(item.path)"
+      class="flex flex-col items-center gap-1"
+    >
       <img
         class="w-7 h-7"
-        src="/assets/icons/system/home.svg"
-        alt="Home"
+        [src]="isActive(item.path) ? item.activeIcon : item.icon"
+        [alt]="item.label"
         draggable="false"
       />
-      <span class="text-xs">Home</span>
-    </button>
-
-    <button class="flex flex-col items-center gap-1">
-      <img
-        class="w-7 h-7"
-        src="/assets/icons/system/cog-inactive.svg"
-        alt="Home"
-        draggable="false"
-      />
-      <span class="text-xs text-[var(--text-inactive-color)]">Settings</span>
+      <span
+        class="text-xs"
+        [ngClass]="{
+          'text-white': isActive(item.path),
+          'text-[var(--text-inactive-color)]': !isActive(item.path)
+        }"
+      >
+        {{ item.label }}
+      </span>
     </button>
   </nav>
 </aside>

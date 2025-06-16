@@ -1,0 +1,66 @@
+<div
+  class="p-6 max-w-md mx-auto bg-slate-700 text-white rounded-xl shadow-lg space-y-6 mt-8"
+>
+  <h2 class="text-xl font-semibold">Weather Units</h2>
+
+  <form [formGroup]="unitsForm" (ngSubmit)="saveSettings()" class="space-y-4">
+    <!-- Temperature Unit -->
+    <div>
+      <label for="temperature-metric" class="block mb-2 font-medium"
+        >Temperature:</label
+      >
+      <div class="flex items-center gap-4">
+        <label class="flex items-center gap-1">
+          <input
+            id="temperature-metric"
+            type="radio"
+            formControlName="temperatureUnit"
+            value="metric"
+          />
+          <span>°C</span>
+        </label>
+        <label class="flex items-center gap-1">
+          <input
+            id="temperature-imperial"
+            type="radio"
+            formControlName="temperatureUnit"
+            value="imperial"
+          />
+          <span>°F</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Wind Speed Unit -->
+    <div>
+      <label for="wind-mps" class="block mb-2 font-medium">Wind Speed:</label>
+      <div class="flex items-center gap-4">
+        <label class="flex items-center gap-1">
+          <input
+            id="wind-mps"
+            type="radio"
+            formControlName="windSpeedUnit"
+            value="m/s"
+          />
+          <span>m/s</span>
+        </label>
+        <label class="flex items-center gap-1">
+          <input
+            id="wind-kmh"
+            type="radio"
+            formControlName="windSpeedUnit"
+            value="km/h"
+          />
+          <span>km/h</span>
+        </label>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="mt-4 px-4 py-2 bg-blue-400 hover:bg-[var(--color-input-bg)] rounded text-white font-semibold"
+    >
+      Save Settings
+    </button>
+  </form>
+</div>

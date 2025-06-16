@@ -30,6 +30,10 @@
       "@weather/models": ["libs/shared/data-access/models/src/index.ts"],
       "@weather/search": ["libs/features/search/feature/search/src/index.ts"],
       "@weather/search-state": ["libs/features/search/state/src/index.ts"],
+      "@weather/setting-state": ["libs/features/settings/state/src/index.ts"],
+      "@weather/settings": [
+        "libs/features/settings/feature/settings/src/index.ts"
+      ],
       "@weather/shared-state": ["libs/shared/state/src/index.ts"],
       "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"],
       "@weather/shell/feature": ["libs/features/shell/feature/src/index.ts"],
