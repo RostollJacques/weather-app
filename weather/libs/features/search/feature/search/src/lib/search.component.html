@@ -14,8 +14,6 @@
     type="text"
     formControlName="searchString"
     placeholder="Search city..."
-    (focus)="setFocus()"
-    (blur)="setFocus()"
   />
 
   <button
@@ -31,9 +29,3 @@
     />
   </button>
 </form>
-
-@if (focus) {
-<div class="italic text-sm ml-5 text-[var(--text-inactive-color)]">
-  Searches on enter press
-</div>
-}

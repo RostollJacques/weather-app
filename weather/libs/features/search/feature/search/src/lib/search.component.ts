@@ -16,7 +16,6 @@ export class SearchBarComponent {
   form: FormGroup = this.fb.group({
     searchString: [''],
   });
-  focus = false;
 
   searchStringSubmit() {
     const searchString = this.form.value.searchString?.trim();
@@ -31,9 +30,5 @@ export class SearchBarComponent {
 
   clear() {
     this.form.get('searchString')?.setValue('');
-  }
-
-  setFocus() {
-    this.focus = !this.focus;
   }
 }

@@ -108,7 +108,7 @@ export const searchReducer = createReducer(
     };
   }),
 
-  on(SearchActions.searchCityByCoordinatesFailure, (state, { error }) => ({
+  on(SearchActions.searchCityFailure, (state, { error }) => ({
     ...state,
     error,
     loading: false,

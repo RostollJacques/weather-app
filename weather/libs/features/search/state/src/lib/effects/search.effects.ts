@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { Actions, ofType } from '@ngrx/effects';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { SearchActions } from '../actions/search.actions';
-import { createEffect } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import {
   ForecastByCityApiService,
   ForecastByCoordinateApiService,
 } from '@weather/api-services';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class SearchEffects {
@@ -16,6 +16,7 @@ export class SearchEffects {
     ForecastByCoordinateApiService
   );
   private forecastByCityApiService = inject(ForecastByCityApiService);
+  private toastr = inject(ToastrService);
 
   getGeolocation$ = createEffect(() =>
     this.actions$.pipe(
@@ -28,7 +29,7 @@ export class SearchEffects {
           catchError((err) =>
             of(
               SearchActions.getGeolocationFailure({
-                error: err.message || 'Permission denied',
+                error: err.message || 'Geolocation permission denied',
               })
             )
           )
@@ -59,7 +60,7 @@ export class SearchEffects {
           catchError((err) =>
             of(
               SearchActions.searchCityByCoordinatesFailure({
-                error: err.message || 'Failed to fetch location by coordinates',
+                error: err.message || 'Could not find location by coordinates',
               })
             )
           )
@@ -74,10 +75,10 @@ export class SearchEffects {
       switchMap((action) =>
         this.forecastByCityApiService.getForecast(action.searchString).pipe(
           map((location) => SearchActions.searchCitySuccess({ location })),
-          catchError((err) =>
+          catchError(() =>
             of(
               SearchActions.searchCityFailure({
-                error: err.message || 'Failed to fetch city by name',
+                error: 'Could not find city by name',
               })
             )
           )
@@ -86,9 +87,36 @@ export class SearchEffects {
     )
   );
 
-  // Functions
+  showError$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          SearchActions.searchCityFailure,
+          SearchActions.getGeolocationFailure,
+          SearchActions.searchCityByCoordinatesFailure
+        ),
+        tap(({ error }) => {
+          this.toastr.error(error || 'An unexpected error occurred.');
+        })
+      ),
+    { dispatch: false }
+  );
+
+  showSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          SearchActions.searchCitySuccess,
+          SearchActions.searchCityByCoordinatesSuccess
+        ),
+        tap(({ location }) => {
+          this.toastr.success(`Location found: ${location?.name}`);
+        })
+      ),
+    { dispatch: false }
+  );
+
   private getLocation(): Observable<{ latitude: number; longitude: number }> {
-    console.log('Getting geolocation...');
     return new Observable((observer) => {
       if (!navigator.geolocation) {
         observer.error(new Error('Geolocation not supported'));
