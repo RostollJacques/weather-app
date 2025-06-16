@@ -1,7 +1,6 @@
 import {
   ApplicationConfig,
   provideZoneChangeDetection,
-  provideBrowserGlobalErrorListeners,
   importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -15,24 +14,34 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { appRoutes } from './app.routes';
-import { SharedStateModule } from '@weather/shared-state';
+import { metaReducers, SharedStateModule } from '@weather/shared-state';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAppConfig } from '@weather/app-config';
 import { authInterceptorfn } from '@weather/api-services';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
-    provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    importProvidersFrom(BrowserAnimationsModule),
 
     provideAppConfig(environment),
     provideHttpClient(withInterceptors([authInterceptorfn])),
+    importProvidersFrom(
+      ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      })
+    ),
 
     provideStore(),
     provideEffects(),
+    provideStore({}, { metaReducers }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: false,

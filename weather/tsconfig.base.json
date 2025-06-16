@@ -17,13 +17,30 @@
     "paths": {
       "@weather/api-services": ["libs/shared/data-access/api/src/index.ts"],
       "@weather/app-config": ["libs/shared/app-config/src/index.ts"],
+      "@weather/detail-card": [
+        "libs/shared/ui/components/detail-card/src/index.ts"
+      ],
       "@weather/features/forecast": [
         "libs/features/forecast/feature/landing-page/src/index.ts"
       ],
       "@weather/forecast-state": ["libs/features/forecast/state/src/index.ts"],
+      "@weather/geolocation": [
+        "libs/features/search/feature/geolocation/src/index.ts"
+      ],
+      "@weather/models": ["libs/shared/data-access/models/src/index.ts"],
+      "@weather/search": ["libs/features/search/feature/search/src/index.ts"],
+      "@weather/search-state": ["libs/features/search/state/src/index.ts"],
+      "@weather/setting-state": ["libs/features/settings/state/src/index.ts"],
+      "@weather/settings": [
+        "libs/features/settings/feature/settings/src/index.ts"
+      ],
       "@weather/shared-state": ["libs/shared/state/src/index.ts"],
+      "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"],
       "@weather/shell/feature": ["libs/features/shell/feature/src/index.ts"],
-      "@weather/shared/app-config": ["libs/shared/app-config/src/index.ts"]
+      "@weather/sidebar": ["libs/shared/ui/sidebar/src/index.ts"],
+      "@weather/summary-card": [
+        "libs/shared/ui/components/summary-card/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

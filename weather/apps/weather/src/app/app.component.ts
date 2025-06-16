@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   imports: [RouterModule],
@@ -9,4 +10,8 @@ import { RouterModule } from '@angular/router';
 })
 export class App {
   protected title = 'weather';
+  private toastr = inject(ToastrService);
+  constructor() {
+    this.toastr.info('Welcome to the Weather App!', 'Hello');
+  }
 }

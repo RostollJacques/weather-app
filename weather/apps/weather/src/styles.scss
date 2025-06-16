@@ -1,7 +1,6 @@
-@layer tailwind-base, tailwind-utilities, tailwind-components;
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
@@ -9,4 +8,34 @@ body {
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+// Variables for Weather App
+:root {
+  // component colours
+  --primary-color: #1e88e5;
+  --secondary-color: #ff9800;
+
+  // text colors
+  --color-light: #ffffff;
+  --text-color: #ffffff;
+  --text-secondary-color: #b0bec5;
+  --text-inactive-color: #90a4ae;
+
+  // notification colors
+  --color-danger: #f44336;
+  --color-success: #4caf50;
+  --color-warning: #ffeb3b;
+  --color-info: #2196f3;
+
+  // input fields
+  --color-input-bg: #1f2b3c;
+
+  //buttons
+  --color-button-hover: #284874;
+
+  // theme colors
+  --background-color: #0b131c;
 }

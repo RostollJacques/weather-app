@@ -1,0 +1,31 @@
+<form
+  class="w-full flex items-center bg-[var(--color-input-bg)] rounded-full px-4 py-2 relative"
+  [formGroup]="form"
+  (ngSubmit)="searchStringSubmit()"
+>
+  <img
+    class="h-5 w-5 mr-2"
+    src="/assets/icons/system/search.svg"
+    alt="Search"
+  />
+
+  <input
+    class="bg-transparent flex-grow px-3 text-white placeholder-gray-400 focus:outline-none"
+    type="text"
+    formControlName="searchString"
+    placeholder="Search city..."
+  />
+
+  <button
+    class="ml-2"
+    type="button"
+    *ngIf="form.value.searchString"
+    (click)="clear()"
+  >
+    <img
+      class="h-5 w-5 rotate-45"
+      src="/assets/icons/system/plus.svg"
+      alt="Clear"
+    />
+  </button>
+</form>

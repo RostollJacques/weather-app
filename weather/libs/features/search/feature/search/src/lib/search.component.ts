@@ -1,0 +1,31 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { SearchFacade } from '@weather/search-state';
+
+@Component({
+  selector: 'lib-search',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.scss',
+})
+export class SearchBarComponent {
+  private fb = inject(FormBuilder);
+  private searchFacade = inject(SearchFacade);
+
+  form: FormGroup = this.fb.group({
+    searchString: [''],
+  });
+
+  searchStringSubmit() {
+    const searchString = this.form.value.searchString?.trim();
+    if (searchString) {
+      this.searchFacade.searchCityName(searchString);
+      this.clear();
+    }
+  }
+
+  clear() {
+    this.form.get('searchString')?.setValue('');
+  }
+}

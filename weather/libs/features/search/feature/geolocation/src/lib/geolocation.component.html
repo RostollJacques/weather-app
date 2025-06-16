@@ -1,0 +1,18 @@
+<div class="flex flex-row">
+  <button
+    class="ml-3 w-10 h-10 rounded bg-[var(--color-input-bg)] hover:bg-[var(--color-button-hover)]"
+    (click)="getGeolocation()"
+  >
+    <!-- todo troubleshoot spin -->
+    <img
+      class="h-5 w-5 m-auto"
+      [ngClass]="{ 'animate-spin': loadingGeolocation$ | async }"
+      src="/assets/icons/system/target.svg"
+      alt="target"
+    />
+  </button>
+
+  <div class="italic text-sm ml-5 text-[var(--text-inactive-color)] mt-3">
+    <span>{{ (currentLocation$ | async)?.name }} </span>
+  </div>
+</div>

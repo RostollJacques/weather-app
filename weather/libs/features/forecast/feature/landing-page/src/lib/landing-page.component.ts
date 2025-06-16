@@ -1,33 +1,37 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ForecastFacade } from '@weather/forecast-state';
-import { ForecastApiService } from '@weather/api-services';
+import { SearchFacade } from '@weather/search-state';
+import { SearchBarComponent } from '@weather/search';
+import { GeolocationComponent } from '@weather/geolocation';
+import { SummaryCardComponent } from '@weather/summary-card';
+import { DetailCardComponent } from '@weather/detail-card';
 
 @Component({
   selector: 'lib-landing-page',
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    SearchBarComponent,
+    GeolocationComponent,
+    SummaryCardComponent,
+    DetailCardComponent,
+  ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LandingPage implements OnInit {
-  public forcastFacade = inject(ForecastFacade);
-  public api = inject(ForecastApiService);
+export class LandingPage {
+  private searchFacade = inject(SearchFacade);
 
-  ngOnInit() {
-    console.log('LandingPage initialized');
+  // observables
+  searchLoading$ = this.searchFacade.loading$;
+  locations$ = this.searchFacade.locations$;
+  selectedLocation$ = this.searchFacade.selectedLocation$;
 
-    this.load();
+  onSelectLocation(locationId: number) {
+    this.searchFacade.selectLocation(locationId);
   }
 
-  load() {
-    this.api.getForecast(40.71, -74.01).subscribe({
-      next: (forecast) => console.log(forecast),
-    });
+  onDeleteLocation(locationId: number) {
+    this.searchFacade.deleteLocation(locationId);
   }
 }

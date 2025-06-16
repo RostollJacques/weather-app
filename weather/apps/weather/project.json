@@ -19,10 +19,14 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/weather/public"
+            "input": "apps/weather/src/assets",
+            "output": "assets"
           }
         ],
-        "styles": ["apps/weather/src/styles.scss"]
+        "styles": [
+          "node_modules/ngx-toastr/toastr.css",
+          "apps/weather/src/styles.scss"
+        ]
       },
       "configurations": {
         "production": {
