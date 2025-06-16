@@ -13,15 +13,25 @@ cd weather
 ## 🚀 Install Dependancies
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
+
+## 🚀 Insert the environment file
+
+- Unzip provided environments file
+- Copy folder
+- Paste folder under weather/apps/weather/src
+- The path to the env file should then be under weather/apps/weather/src/environments/environment.ts
+
+Note:
+These files are untracked by github please do not publish the api key inside them
 
 ## 🚀 Run Locally
 
 Start the development server for your app:
 
 ```bash
-npx nx serve weather
+nx serve weather
 ```
 
 ## 🚀 Units used
