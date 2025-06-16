@@ -1,0 +1,38 @@
+<div class="flex items-center w-full group">
+  <div
+    class="bg-slate-700 text-white rounded-xl shadow-md px-4 py-2 flex items-center justify-between cursor-pointer hover:bg-slate-600 transition-all duration-300 w-full border border-transparent"
+    [class.bg-slate-500]="selectedLocationId() === location().id"
+    (click)="onSelectLocation()"
+    tabindex="0"
+    role="button"
+  >
+    <div class="flex items-center gap-3">
+      <img
+        class="w-8 h-8"
+        [src]="
+          'https://openweathermap.org/img/wn/' +
+          location().weather[0].icon +
+          '@2x.png'
+        "
+        alt="Weather Icon"
+      />
+      <div class="flex flex-col">
+        <span class="font-semibold">{{ location().name }}</span>
+        <span class="text-xs text-gray-300">
+          {{ location().dt * 1000 | date : 'HH:mm' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="text-2xl font-semibold">
+      {{ location().main.temp | number : '1.0-0' }}°
+    </div>
+  </div>
+
+  <button
+    class="ml-2 w-10 h-10 rounded bg-[var(--color-input-bg)] hover:bg-[var(--color-danger)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0"
+    (click)="onDeleteLocation()"
+  >
+    <img src="/assets/icons/system/trashcan.svg" alt="Delete" class="w-5 h-5" />
+  </button>
+</div>

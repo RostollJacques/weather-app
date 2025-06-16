@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Geolocation } from './geolocation';
+import { Geolocation } from './geolocation.component';
 
 describe('Geolocation', () => {
   let component: Geolocation;

@@ -23,12 +23,19 @@ body {
   --color-light: #ffffff;
   --text-color: #ffffff;
   --text-secondary-color: #b0bec5;
+  --text-inactive-color: #90a4ae;
 
   // notification colors
-  --error-color: #f44336;
-  --success-color: #4caf50;
-  --warning-color: #ffeb3b;
-  --info-color: #2196f3;
+  --color-danger: #f44336;
+  --color-success: #4caf50;
+  --color-warning: #ffeb3b;
+  --color-info: #2196f3;
+
+  // input fields
+  --color-input-bg: #1f2b3c;
+
+  //buttons
+  --color-button-hover: #284874;
 
   // theme colors
   --background-color: #0b131c;

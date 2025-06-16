@@ -1,1 +1,1 @@
-export * from './lib/geolocation';
+export * from './lib/geolocation.component';

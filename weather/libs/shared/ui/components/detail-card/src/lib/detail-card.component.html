@@ -1,0 +1,41 @@
+<div
+  class="bg-slate-700 text-white rounded-xl shadow-md p-6 w-full max-w-3xl mr-8"
+>
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h2 class="text-2xl font-bold">{{ location().name }}</h2>
+      <p class="text-sm text-gray-300">
+        {{ (location().dt + location().timezone) * 1000 | date : 'mediumTime' }}
+      </p>
+    </div>
+    <img
+      class="w-20 h-20"
+      [src]="
+        'https://openweathermap.org/img/wn/' +
+        location().weather[0].icon +
+        '@2x.png'
+      "
+      alt="Weather Icon"
+    />
+  </div>
+
+  <div class="mb-4">
+    <p class="capitalize text-lg text-gray-300 mb-1">
+      {{ location().weather[0].description }}
+    </p>
+    <p class="text-5xl font-bold">
+      {{ location().main.temp | number : '1.0-0' }}°
+    </p>
+  </div>
+
+  <div class="flex justify-between text-sm text-gray-300 mb-4">
+    <div>Min: {{ location().main.temp_min | number : '1.0-0' }}°</div>
+    <div>Max: {{ location().main.temp_max | number : '1.0-0' }}°</div>
+  </div>
+
+  <div class="flex justify-between text-sm text-gray-300">
+    <div>Humidity: {{ location().main.humidity }}%</div>
+    <div>Wind: {{ location().wind.speed }} m/s</div>
+    <div>Pressure: {{ location().main.pressure }} hPa</div>
+  </div>
+</div>
