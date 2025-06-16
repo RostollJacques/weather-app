@@ -22,9 +22,6 @@ export class SearchBarComponent {
     if (searchString) {
       this.searchFacade.searchCityName(searchString);
       this.clear();
-      console.log('searchStringSubmit', searchString);
-    } else {
-      console.log('raise error');
     }
   }
 
