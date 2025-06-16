@@ -24,13 +24,4 @@ export const initialState: SettingsState = {
   selectedLocationId: undefined,
 };
 
-export const settingsReducer = createReducer(
-  initialState
-
-  // search geolocation
-  // on(SettingsActions.getGeolocation, (state) => ({
-  //   ...state,
-  //   loadingGeolocation: true,
-  //   error: undefined,
-  // }))
-);
+export const settingsReducer = createReducer(initialState);

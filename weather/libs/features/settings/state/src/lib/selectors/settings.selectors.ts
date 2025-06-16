@@ -3,7 +3,7 @@ import * as fromSettingsState from '../reducers/settings.reducers';
 
 export const selectSearchState =
   createFeatureSelector<fromSettingsState.SettingsState>(
-    fromSettingsState.searchFeatureKey
+    fromSettingsState.settingsFeatureKey
   );
 
 export const selectLoading = createSelector(
